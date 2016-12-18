@@ -17,3 +17,5 @@ Use
 	sudo docker run -it jjmerelo/alpine-perl6
 
 to get into the perl6 interpreter 
+
+Contributions, suggestions and patches are welcome.
