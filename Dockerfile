@@ -18,9 +18,10 @@ RUN apk add linux-headers
 RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
 RUN echo 'export PATH=~/.rakudobrew/bin:$PATH' >> /etc/profile
 RUN echo 'eval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile
+RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew init
 
 #Build moar
-RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew init && /root/.rakudobrew/bin/rakudobrew build moar
+RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew build moar
 
 #Build other utilities
 RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew build panda
