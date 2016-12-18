@@ -18,8 +18,8 @@ RUN echo 'export PATH=~/.rakudobrew/bin:$PATH' >> /etc/profile
 RUN echo 'eval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile
 
 #Build moar
-RUN /root/.rakudobrew/bin/rakudobrew build moar
+RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew init && /root/.rakudobrew/bin/rakudobrew build moar
 
 #Build other utilities
-RUN /root/.rakudobrew/bin/rakudobrew build panda
+RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew build panda
 RUN /root/.rakudobrew/bin/panda install Linenoise
