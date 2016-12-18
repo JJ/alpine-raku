@@ -1,5 +1,7 @@
 FROM alpine:latest
 WORKDIR /root
+CMD ["sh", "-l", "-c", "perl6"]
+
 #Basic setup
 RUN apk update
 RUN apk upgrade
@@ -22,4 +24,4 @@ RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew init && /root/.rakudobrew/
 
 #Build other utilities
 RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew build panda
-RUN /root/.rakudobrew/bin/panda install Linenoise
+RUN export PATH=~/.rakudobrew/bin:$PATH && panda install Linenoise
