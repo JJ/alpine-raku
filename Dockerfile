@@ -1,6 +1,7 @@
 FROM alpine:latest
+MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
-ENTRYPOINT ["perl6"]
+ENTRYPOINT ["sh", "-l", "-c", "perl6"]
 CMD ["sh", "-l", "-c", "perl6"]
 
 #Basic setup
@@ -8,12 +9,7 @@ RUN apk update
 RUN apk upgrade
 
 #Add basic programs
-RUN apk add git
-RUN apk add perl
-RUN apk add gcc
-RUN apk add musl-dev
-RUN apk add make
-RUN apk add linux-headers
+RUN apk add gcc git linux-headers make musl-dev perl
 
 #Download and install rakudo
 RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
