@@ -10,3 +10,4 @@ It includes
 * Readline for easy access
 
 
+Images should be available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/) 
