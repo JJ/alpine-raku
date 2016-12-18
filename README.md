@@ -10,4 +10,10 @@ It includes
 * Readline for easy access
 
 
-Images should be available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/) 
+Images should be available automatically [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
+
+Use
+
+	sudo docker run -it jjmerelo/alpine-perl6
+
+to get into the perl6 interpreter 

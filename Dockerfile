@@ -1,5 +1,6 @@
 FROM alpine:latest
 WORKDIR /root
+ENTRYPOINT ["perl6"]
 CMD ["sh", "-l", "-c", "perl6"]
 
 #Basic setup
