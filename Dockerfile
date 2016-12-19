@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
-CMD ["sh", "-l", "-c", "perl6"]
+ENTRYPOINT ["sh", "-l", "-c", "perl6"]
 
 #Basic setup
 RUN apk update
