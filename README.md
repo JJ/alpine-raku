@@ -16,6 +16,12 @@ Use
 
 	sudo docker run -it jjmerelo/alpine-perl6
 
-to get into the perl6 interpreter 
+to get into the perl6 interpreter. Can also be used as a "binary"
+
+	sudo docker run -t jjmerelo/alpine-perl6 -e "say 'hello þor'"
+	
+or you can get into the container by running
+
+	sudo docker run -it --entrypoint sh -l -c jjmerelo/alpine-perl6
 
 Contributions, suggestions and patches are welcome.
