@@ -1,7 +1,6 @@
 FROM alpine:latest
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
-ENTRYPOINT ["sh", "-l", "-c", "perl6"]
 CMD ["sh", "-l", "-c", "perl6"]
 
 #Basic setup
