@@ -22,3 +22,7 @@ RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew build moar
 #Build other utilities
 RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew build panda
 RUN export PATH=~/.rakudobrew/bin:$PATH && panda install Linenoise
+
+#Mount point
+RUN mkdir /app
+VOLUME /app
