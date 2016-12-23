@@ -1,13 +1,8 @@
 #!/usr/bin/env perl6
 
-sub horadam ( Int $nth, Rat $r, Rat $s ) {
-    given $nth {
-	when 0 { 0 }
-	when 1 { 1 }
-	default { $r*horadam( $nth-1, $r, $s) + $s*horadam($nth-2,$r,$s) }
-    }
-}
 
-sub MAIN( Int $n, Rat $r = 0.25, Rat $s = 0.75 ) {
-    say horadam( $n, $r, $s);
+
+sub MAIN( Int $nth, Int $p = 0, Int $q = 1, Rat $r = .25, Rat $s = .75 ) {
+    my @horadam = $p, $q, {$^n1 × $r + $^n2 × $s} … ∞;
+    say @horadam[^$nth];
 }

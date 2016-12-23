@@ -2,5 +2,5 @@
 
 sub MAIN( Int $nth! ) {
     my @pell = 1,2,* + * * 2  ... *;
-    say @pell[$nth];
+    say @pell[^$nth];
 }
