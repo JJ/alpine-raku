@@ -14,14 +14,15 @@ RUN apk add gcc git linux-headers make musl-dev perl
 RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
 RUN echo 'export PATH=~/.rakudobrew/bin:$PATH' >> /etc/profile
 RUN echo 'eval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile
-RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew init
+ENV PATH="/root/.rakudobrew/bin:${PATH}"
+RUN rakudobrew init
 
 #Build moar
-RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew build moar
+RUN rakudobrew build moar
 
 #Build other utilities
-RUN export PATH=~/.rakudobrew/bin:$PATH && rakudobrew build panda
-RUN export PATH=~/.rakudobrew/bin:$PATH && panda install Linenoise
+RUN rakudobrew build panda
+RUN panda install Linenoise
 
 #Mount point
 RUN mkdir /app

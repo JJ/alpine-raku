@@ -28,6 +28,22 @@ You can also run external scripts via the mounted `/app` volume
 
 	sudo docker run -v `pwd`:/app -it  jjmerelo/alpine-perl6 /app/heloþor.p6
 	
-This is the example provided in this repo. Check out the use of þ.
+This is the example provided in this repo. Check out the use of
+þ. Cool, isn't it? You can use any other directory instead of `/app`
+
+For instance, we can create a directory this way
+
+	sudo docker run -t jjmerelo/alpine-perl6 -e "mkdir 'p6-app'; say 'p6-app'.IO.abspath;"
+	
+This will return
+	
+	/root/p6-app
+
+And then
+
+	sudo -E  docker run -t -v `pwd`:/root/p6-app jjmerelo/alpine-perl6 /root/p6-app/heloþor.p6
+
+
+## Contributions
 
 Contributions, suggestions and patches are welcome.
