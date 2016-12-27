@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 WORKDIR /root
-ENTRYPOINT ["/root/.rakudobrew/bin/perl6"]
+ENTRYPOINT ["perl6"]
 
 #Basic setup
 RUN apk update
