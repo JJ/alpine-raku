@@ -1,0 +1,6 @@
+2017-01-21  Juan J. merelo  <jmerelo@penny>
+
+	* Dockerfile (ENV PATH): Adapts the Dockerfile to the latest moar
+	version, as well as reduces the number of planes to make a lighter
+	image. 
+
