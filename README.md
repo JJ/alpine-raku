@@ -11,7 +11,7 @@ It includes
 * perl, needed to run rakudobrew
 
 
-New images should be automatically available  [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
+New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
 
 Use
 

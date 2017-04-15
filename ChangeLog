@@ -1,3 +1,9 @@
+2017-04-15  Juan J. merelo  <jmerelo@penny>
+
+	* Dockerfile (ENV PATH): Eliminates volume which is probably useless and reduces planes by one
+
+	* README.md: Updating for the new version.
+
 2017-01-21  Juan J. merelo  <jmerelo@penny>
 
 	* Dockerfile (ENV PATH): Adapts the Dockerfile to the latest moar
