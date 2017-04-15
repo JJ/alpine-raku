@@ -15,5 +15,3 @@ ENV PATH="/root/.rakudobrew/bin:${PATH}"
 #Build moar
 RUN rakudobrew build moar && rakudobrew build zef && panda install Linenoise && rakudobrew init
 RUN apk del gcc git linux-headers make musl-dev 
-
-

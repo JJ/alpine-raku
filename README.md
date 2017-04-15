@@ -6,8 +6,8 @@ It includes
 
 * Rakudobrew
 * Perl6, latest version
-* panda
-* Readline for easy access
+* `zef` for module installation
+* Readline for easy shell use.
 * perl, needed to run rakudobrew
 
 
