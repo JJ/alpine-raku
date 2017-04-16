@@ -13,5 +13,6 @@ RUN echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rak
 ENV PATH="/root/.rakudobrew/bin:${PATH}"
 
 #Build moar
-RUN rakudobrew build moar && rakudobrew build zef && panda install Linenoise && rakudobrew init
+RUN rakudobrew build moar && rakudobrew build zef && zef install Linenoise
 RUN apk del gcc git linux-headers make musl-dev 
+RUN rakudobrew init
