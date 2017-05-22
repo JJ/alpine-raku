@@ -10,8 +10,9 @@ It includes
 * Readline for easy shell use.
 * perl, needed to run rakudobrew
 
-
 New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
+
+## Working with this container
 
 Use
 
@@ -25,7 +26,7 @@ or you can get into the container by running
 
 	sudo docker run -it --entrypoint sh -l -c jjmerelo/alpine-perl6
 	
-You can also run external scripts via the mounted `/app` volume
+You can also run external scripts via the mounted `/app` volume. After changing to this directory
 
 	sudo docker run -v `pwd`:/app -it  jjmerelo/alpine-perl6 /app/heloþor.p6
 	
@@ -56,3 +57,4 @@ Check out the [Madhava-Leibniz series that computes the digits of Pi](https://gi
 ## Contributions
 
 Contributions, suggestions and patches are welcome.
+
