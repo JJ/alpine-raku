@@ -9,6 +9,7 @@ It includes
 * `zef` for module installation
 * Readline for easy shell use.
 * perl, needed to run rakudobrew
+* wget which is needed for some other downstream compatibilities.
 
 New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
 
@@ -49,6 +50,24 @@ which would return the first 6 [Pell numbers](https://en.wikipedia.org/wiki/Pell
 	sudo -E  docker run -t -v `pwd`:/root/p6-app jjmerelo/alpine-perl6 /root/p6-app/horadam.p6 10
 
 which will return the 10 first elements of the [Horadam sequence](http://mathworld.wolfram.com/HoradamSequence.html) for p=0, q=1, r= 0.25, s=0.75
+
+## Install new modules
+
+Since `zef` is installed, you can use it to install new modules. You
+can do it by getting into the container and running the shell:
+
+	sudo docker run -it --entrypoint="/bin/sh" jjmerelo/alpine-perl6
+
+and then
+
+	zef install Math::Constants
+	
+Or directly in a single command
+
+	sudo docker run -it --rm  --entrypoint=/bin/sh jjmerelo/alpine-perl6 -c "zef install Math::Sequences"
+
+This overrides the default entrypoint and, instead, runs `zef` as a
+shell command
 
 ## More one-liners for demos
 
