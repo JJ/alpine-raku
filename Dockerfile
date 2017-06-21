@@ -16,4 +16,5 @@ ENV PATH="/root/.rakudobrew/bin:${PATH}"
 RUN rakudobrew build moar && rakudobrew build zef && zef install Linenoise
 RUN apk del gcc linux-headers make musl-dev
 RUN version=`sed "s/\n//" /root/.rakudobrew/CURRENT` && rm -rf /root/.rakudobrew/${version}/src
+RUN rm -rf /root/.rakudobrew/git_reference
 RUN rakudobrew init
