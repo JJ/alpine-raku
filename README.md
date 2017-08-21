@@ -9,7 +9,7 @@ It includes
 * `zef` for module installation
 * Readline for easy shell use.
 * perl, needed to run rakudobrew
-* wget which is needed for some other downstream compatibilities.
+* `wget` which is needed for some other downstream compatibilities.
 
 New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
 
