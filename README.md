@@ -7,7 +7,7 @@ It includes
 * Rakudobrew
 * Perl6, latest version
 * `zef` for module installation
-* Readline for easy shell use.
+* [Linenoise](https://github.com/hoelzro/p6-linenoise) for easy shell use.
 * perl, needed to run rakudobrew
 * `wget` which is needed for some other downstream compatibilities.
 
