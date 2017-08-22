@@ -77,3 +77,6 @@ Check out the [Madhava-Leibniz series that computes the digits of Pi](https://gi
 
 Contributions, suggestions and patches are welcome.
 
+## Notes on the last version
+
+This version has been updated to Rakudo Perl 2017.07. 
