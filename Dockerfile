@@ -5,7 +5,7 @@ LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="2017.11"
 
 #Basic setup and programs
 RUN apk update && apk upgrade \
-    && apk add gcc git linux-headers make musl-dev perl wget curl-dev openssl-dev
+    && apk add gcc git linux-headers make musl-dev perl wget curl-dev openssl-dev curl
 
 #Download and install rakudo
 RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
@@ -14,6 +14,8 @@ ENV PATH="/root/.rakudobrew/bin:${PATH}"
 
 #Build moar, zef and line utilities and erase everything
 RUN rakudobrew build moar
+RUN curl -L https://cpanmin.us | perl - App::cpanminus
+RUN cpanm Test::Harness --no-wget
 RUN git clone https://github.com/ugexe/zef.git && prove -v -e 'perl6 -I zef/lib' zef/t
 RUN rakudobrew rehash
 RUN zef install --force-test Linenoise
