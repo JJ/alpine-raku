@@ -12,12 +12,16 @@ RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
 RUN echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile
 ENV PATH="/root/.rakudobrew/bin:${PATH}"
 
-#Build moar, zef and line utilities and erase everything
+#Build moar
 RUN rakudobrew build moar
+
+#Build zef
 RUN curl -L https://cpanmin.us | perl - App::cpanminus
 RUN cpanm Test::Harness --no-wget
-RUN git clone https://github.com/ugexe/zef.git && prove -v -e 'perl6 -I zef/lib' zef/t
+RUN git clone https://github.com/ugexe/zef.git && prove -v -e 'perl6 -I zef/lib' zef/t && perl6 -Ilib bin/zef --verbose install .
 RUN rakudobrew rehash
+
+#Install the rest of the stuff
 RUN zef install --force-test Linenoise
 RUN apk del gcc linux-headers make musl-dev curl-dev
 RUN version=`sed "s/\n//" /root/.rakudobrew/CURRENT` && rm -rf /root/.rakudobrew/${version}/src
