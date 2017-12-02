@@ -1,7 +1,7 @@
 FROM alpine:latest
 WORKDIR /root
 ENTRYPOINT ["perl6"]
-LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="2017.10"
+LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="2017.11"
 
 #Basic setup and programs
 RUN apk update &&  apk upgrade \
@@ -13,8 +13,10 @@ RUN echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rak
 ENV PATH="/root/.rakudobrew/bin:${PATH}"
 
 #Build moar, zef and line utilities and erase everything
-RUN rakudobrew build moar 
+RUN rakudobrew build moar
+RUN rakudobrew rehash
 RUN rakudobrew build zef
+RUN rakudobrew rehash
 RUN zef install Linenoise
 RUN apk del gcc linux-headers make musl-dev curl-dev
 RUN version=`sed "s/\n//" /root/.rakudobrew/CURRENT` && rm -rf /root/.rakudobrew/${version}/src
