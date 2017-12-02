@@ -5,7 +5,7 @@ LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="2017.11"
 
 #Basic setup and programs
 RUN apk update &&  apk upgrade \
-    &&  apk add gcc git linux-headers make musl-dev perl wget curl-dev openssl-deva
+    &&  apk add gcc git linux-headers make musl-dev perl wget curl-dev openssl-dev
 
 #Download and install rakudo
 RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
