@@ -18,11 +18,11 @@ RUN rakudobrew build moar
 #Build zef
 RUN curl -L https://cpanmin.us | perl - App::cpanminus
 RUN cpanm Test::Harness --no-wget
-RUN git clone https://github.com/ugexe/zef.git && prove -v -e 'perl6 -I zef/lib' zef/t && perl6 -Izef/lib zef/bin/zef  --verbose install ./zef
+RUN git clone https://github.com/ugexe/zef.git && prove -v -e 'perl6 -I zef/lib' zef/t && perl6 -Izef/lib zef/bin/zef --verbose install ./zef
 RUN rakudobrew rehash
 
 #Install the rest of the stuff
-RUN zef install --force-test Linenoise
+RUN zef install  Linenoise
 
 #Clean up a bit
 RUN apk del gcc linux-headers make musl-dev curl-dev
