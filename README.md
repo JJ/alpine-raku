@@ -1,7 +1,6 @@
 # alpine-perl6 [![Build Status](https://travis-ci.org/JJ/alpine-perl6.svg?branch=master)](https://travis-ci.org/JJ/alpine-perl6)
 
-
-A docker container with Perl 6 using the minimalist Linux distro Alpine. 
+A Docker container with Perl 6 using the minimalist Linux distro Alpine. 
 
 It includes
 
