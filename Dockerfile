@@ -23,7 +23,11 @@ RUN rakudobrew rehash
 
 #Install the rest of the stuff
 RUN zef install --force-test Linenoise
+
+#Clean up a bit
 RUN apk del gcc linux-headers make musl-dev curl-dev
 RUN version=`sed "s/\n//" /root/.rakudobrew/CURRENT` && rm -rf /root/.rakudobrew/${version}/src
 RUN rm -rf /root/.rakudobrew/git_reference /root/zef
+
+# Print this as a check (really unnecessary) 
 RUN rakudobrew init
