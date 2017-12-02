@@ -15,7 +15,6 @@ ENV PATH="/root/.rakudobrew/bin:${PATH}"
 #Build moar, zef and line utilities and erase everything
 RUN rakudobrew build moar
 RUN git clone https://github.com/ugexe/zef.git && cd zef && perl6 -Ilib bin/zef --verbose --force-test install .
-RUN rakudobrew rehash
 RUN zef install Linenoise
 RUN apk del gcc linux-headers make musl-dev curl-dev
 RUN version=`sed "s/\n//" /root/.rakudobrew/CURRENT` && rm -rf /root/.rakudobrew/${version}/src
