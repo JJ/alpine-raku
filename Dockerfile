@@ -18,7 +18,7 @@ RUN rakudobrew build moar
 #Build zef
 RUN curl -L https://cpanmin.us | perl - App::cpanminus
 RUN cpanm Test::Harness --no-wget
-RUN git clone https://github.com/ugexe/zef.git && prove -v -e 'perl6 -I zef/lib' zef/t && perl6 -Ilib bin/zef --verbose install .
+RUN git clone https://github.com/ugexe/zef.git && prove -v -e 'perl6 -I zef/lib' zef/t && perl6 -Ilib zef/bin/zef install --verbose .
 RUN rakudobrew rehash
 
 #Install the rest of the stuff
