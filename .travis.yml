@@ -1,0 +1,8 @@
+services:
+  - docker
+  
+install:
+  - docker build -t test .
+  - docker run -d --name test test
+
+script: docker ps | grep -q test
