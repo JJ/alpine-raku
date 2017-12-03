@@ -3,7 +3,12 @@ services:
   
 install:
   - docker --version
-  - docker build -t test .
-  - docker run -d --name test test
+  - docker build -t testlatest .
+  - docker run -d --name testlatest testlatest
+  - docker build -t test6b 6.b/
+  - docker run -d --name test6b test6b
 
-script: docker ps | grep -q test
+  
+script:
+  - docker ps | grep -q testlatest
+  - docker ps | grep -q test6b
