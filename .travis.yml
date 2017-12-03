@@ -7,8 +7,10 @@ install:
   - docker run -d --name testlatest testlatest
   - docker build -t test6b 6.b/
   - docker run -d --name test6b test6b
-
+  - docker build -t test6c 6.c/
+  - docker run -d --name test6c test6c
   
 script:
   - docker ps | grep -q testlatest
   - docker ps | grep -q test6b
+  - docker ps | grep -q test6c
