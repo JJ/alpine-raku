@@ -12,12 +12,14 @@ RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
 RUN echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile
 ENV PATH="/root/.rakudobrew/bin:${PATH}"
 
+# Get prove
+RUN curl -L https://cpanmin.us | perl - App::cpanminus
+RUN cpanm Test::Harness --no-wget
+
 #Build moar
 RUN rakudobrew build moar v6.b
 
 #Build zef
-RUN curl -L https://cpanmin.us | perl - App::cpanminus
-RUN cpanm Test::Harness --no-wget
 RUN git clone https://github.com/ugexe/zef.git && perl6 -Izef/lib zef/bin/zef --verbose install ./zef
 RUN rakudobrew rehash
 
