@@ -1,7 +1,7 @@
 FROM alpine:latest
 WORKDIR /root
 ENTRYPOINT ["perl6"]
-LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="6.b"
+LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="6.c"
 
 #Basic setup and programs
 RUN apk update && apk upgrade \
@@ -13,12 +13,12 @@ RUN echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rak
 ENV PATH="/root/.rakudobrew/bin:${PATH}"
 
 #Build moar
-RUN rakudobrew build moar 2016.12
+RUN rakudobrew build moar 2017.12
 
 #Build zef
 RUN curl -L https://cpanmin.us | perl - App::cpanminus
 RUN cpanm Test::Harness --no-wget
-RUN git clone https://github.com/ugexe/zef.git && prove -v -e 'perl6 -I zef/lib' zef/t && perl6 -Izef/lib zef/bin/zef --verbose install ./zef
+RUN git clone https://github.com/ugexe/zef.git && perl6 -Izef/lib zef/bin/zef --verbose install ./zef 
 RUN rakudobrew rehash
 
 #Install the rest of the stuff
