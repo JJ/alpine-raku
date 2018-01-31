@@ -1,7 +1,7 @@
 FROM alpine:latest
 WORKDIR /root
 ENTRYPOINT ["perl6"]
-LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="2018.01"
+LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="6.b"
 
 #Basic setup and programs
 RUN apk update && apk upgrade \
@@ -13,7 +13,7 @@ RUN echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rak
 ENV PATH="/root/.rakudobrew/bin:${PATH}"
 
 #Build moar
-RUN rakudobrew build moar
+RUN rakudobrew build moar 2016.12
 
 #Build zef
 RUN curl -L https://cpanmin.us | perl - App::cpanminus
