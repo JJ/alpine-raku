@@ -1,7 +1,7 @@
 FROM alpine:latest
 WORKDIR /root
 ENTRYPOINT ["perl6"]
-LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="2018.03"
+LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="2018.01"
 
 #Basic setup and programs
 RUN apk update && apk upgrade \
