@@ -14,7 +14,7 @@ RUN apk update && apk upgrade \
     && rakudobrew build moar \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
-    && git clone https://github.com/ugexe/zef.git && \
+    && git clone https://github.com/ugexe/zef.git \
     && prove -v -e 'perl6 -I zef/lib' zef/t \
     && perl6 -Izef/lib zef/bin/zef --verbose install ./zef \
     && rakudobrew rehash \
