@@ -3,7 +3,7 @@ LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="2018.03"
 
 # Environment
 ENV PATH="/root/.rakudobrew/bin:${PATH}" \
-    PKGS="curl git" \
+    PKGS="curl git perl" \
     PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget"
 
 # Basic setup and programs
