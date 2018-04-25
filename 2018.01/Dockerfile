@@ -13,7 +13,7 @@ RUN echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rak
 ENV PATH="/root/.rakudobrew/bin:${PATH}"
 
 #Build moar
-RUN rakudobrew build moar
+RUN rakudobrew build moar 2018.01
 
 #Build zef
 RUN curl -L https://cpanmin.us | perl - App::cpanminus
