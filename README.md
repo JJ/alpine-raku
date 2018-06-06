@@ -9,10 +9,15 @@ It includes
 * `zef` for module installation
 * [Linenoise](https://github.com/hoelzro/p6-linenoise) for easy shell use.
 * perl, needed to run rakudobrew
-* `wget` which is needed for some other downstream compatibilities.
+* `curl` which is needed for some other downstream compatibilities.
 * `cpan` which is needed to install some Perl5 modules
 
-New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/)
+New images should be automatically
+available
+[at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/).
+
+> Please note that `wget` is installed by default in Alpine, but has
+> some known issues. Please use `curl` whenever possible.
 
 ## Working with this container
 
