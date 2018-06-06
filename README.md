@@ -85,4 +85,4 @@ Contributions, suggestions and patches are welcome.
 
 ## Notes on the last version
 
-This version has been updated to Rakudo Perl 2017.07. 
+This version has been updated to Rakudo Perl 2018.04.
