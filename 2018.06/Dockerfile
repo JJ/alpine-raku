@@ -1,12 +1,12 @@
 FROM alpine:latest
-LABEL version="2.0.4" maintainer="JJMerelo@GMail.com" perl6version="2018.08"
+LABEL version="2.0.4" maintainer="JJMerelo@GMail.com" perl6version="2018.06"
 
 # Environment
 ENV PATH="/root/.rakudobrew/bin:${PATH}" \
     PKGS="curl git perl" \
     PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget"
 
-# Basic setup, programs and init
+# Basic setup and programs
 RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP \
     && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
