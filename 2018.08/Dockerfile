@@ -11,7 +11,7 @@ RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP \
     && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
     && echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile \
-    && rakudobrew build moar \
+    && rakudobrew build moar  2018.08 \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
     && git clone https://github.com/ugexe/zef.git \
