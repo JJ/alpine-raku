@@ -1,5 +1,5 @@
 FROM alpine:latest
-LABEL version="2.0.4" maintainer="JJMerelo@GMail.com" perl6version="2018.10"
+LABEL version="2.0.4" maintainer="JJMerelo@GMail.com" perl6version="2018.09"
 
 # Environment
 ENV PATH="/root/.rakudobrew/bin:${PATH}" \
@@ -11,7 +11,7 @@ RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP \
     && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
     && echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile \
-    && rakudobrew build moar \
+    && rakudobrew build moar 2018.09 \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
     && git clone https://github.com/ugexe/zef.git \
