@@ -23,9 +23,9 @@ RUN apk update && apk upgrade \
     && RAKUDO_VERSION=`sed "s/\n//" /root/.rakudobrew/CURRENT` \
        rm -rf /root/.rakudobrew/${RAKUDO_VERSION}/src /root/zef \
        /root/.rakudobrew/git_reference \
-    # Print this as a check (really unnecessary) 
+    # Print this as a check (really unnecessary)
     && rakudobrew init
 
-# Runtime    
+# Runtime
 WORKDIR /root
 ENTRYPOINT ["perl6"]
