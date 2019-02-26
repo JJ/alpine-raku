@@ -11,6 +11,7 @@ RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP \
     && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
     && echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile \
+    && echo 'export PATH=~/.rakudobrew/moar-master/install/share/perl6/site/bin:$PATH\neval "$(/root/.rakudobrew/moar-master/install/share/perl6/site/bin/rakudobrew init -)"' >> /etc/profile \
     && rakudobrew build moar \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
