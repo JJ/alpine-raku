@@ -91,4 +91,6 @@ Contributions, suggestions and patches are welcome.
 
 ## Notes on the last version
 
-This version has been updated to Rakudo Perl 2018.11.
+This version has been updated to the state of Rakudo Perl in February
+2019, despite the absence of the 2019.x versions. It's mainly due to a
+(possibly) breaking change in the location of the index files.
