@@ -2,7 +2,7 @@ FROM alpine:latest
 LABEL version="2.0.5" maintainer="JJMerelo@GMail.com" perl6version="2019.01"
 
 # Environment
-ENV PATH="/root/.rakudobrew/bin:${PATH}" \
+ENV PATH="/root/.rakudobrew/bin:/root/.rakudobrew/moar-master/install/share/perl6/site/bin:${PATH}" \
     PKGS="curl git perl" \
     PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget"
 
@@ -12,13 +12,14 @@ RUN apk update && apk upgrade \
     && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
     && echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile \
     && echo 'export PATH=~/.rakudobrew/moar-master/install/share/perl6/site/bin:$PATH\neval "$(/root/.rakudobrew/moar-master/install/share/perl6/site/bin/rakudobrew init -)"' >> /etc/profile \
-    && echo $PATH \
+    && cat /etc/profile \
     && rakudobrew build moar \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
     && git clone https://github.com/ugexe/zef.git \
     && prove -v -e 'perl6 -I zef/lib' zef/t \
     && perl6 -Izef/lib zef/bin/zef --verbose install ./zef \
+    && which zef \
     && zef install Linenoise \
     && apk del $PKGS_TMP \
     && RAKUDO_VERSION=`sed "s/\n//" /root/.rakudobrew/CURRENT` \
