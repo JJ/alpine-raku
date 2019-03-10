@@ -13,7 +13,7 @@ RUN apk update && apk upgrade \
     && echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile \
     && echo 'export PATH=~/.rakudobrew/moar-master/install/share/perl6/site/bin:$PATH\neval "$(/root/.rakudobrew/moar-master/install/share/perl6/site/bin/rakudobrew init -)"' >> /etc/profile \
     && cat /etc/profile \
-    && rakudobrew build moar \
+    && rakudobrew build moar 2019.03 \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
     && git clone https://github.com/ugexe/zef.git \
