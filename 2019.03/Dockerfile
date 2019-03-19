@@ -1,8 +1,8 @@
 FROM alpine:latest
-LABEL version="2.0.5" maintainer="JJMerelo@GMail.com" perl6version="2019.03.1"
+LABEL version="2.0.5" maintainer="JJMerelo@GMail.com" perl6version="2019.03"
 
 # Environment
-ENV PATH="/root/.rakudobrew/bin:/root/.rakudobrew/moar-2019.03.1/install/share/perl6/site/bin:${PATH}" \
+ENV PATH="/root/.rakudobrew/bin:/root/.rakudobrew/moar-2019.03/install/share/perl6/site/bin:${PATH}" \
     PKGS="curl git perl" \
     PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget"
 
@@ -11,9 +11,9 @@ RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP \
     && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
     && echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile \
-    && echo 'export PATH=~/.rakudobrew/moar-2019.03.1/install/share/perl6/site/bin:$PATH\neval "$(/root/.rakudobrew/moar-2019.03.1/install/share/perl6/site/bin/rakudobrew init -)"' >> /etc/profile \
+    && echo 'export PATH=~/.rakudobrew/moar-2019.03/install/share/perl6/site/bin:$PATH\neval "$(/root/.rakudobrew/moar-2019.03/install/share/perl6/site/bin/rakudobrew init -)"' >> /etc/profile \
     && cat /etc/profile \
-    && rakudobrew build moar 2019.03.1 \
+    && rakudobrew build moar 2019.03 \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
     && git clone https://github.com/ugexe/zef.git \
