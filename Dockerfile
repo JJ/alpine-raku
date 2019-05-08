@@ -9,16 +9,16 @@ ENV PATH="/root/.rakudobrew/bin:/root/.rakudobrew/moar-2019.03.1/install/share/p
 # Basic setup, programs and init
 RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP \
-    && git clone -b v1 https://github.com/tadzik/rakudobrew ~/.rakudobrew \
-    && echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile \
-    && echo 'export PATH=~/.rakudobrew/moar-2019.03.1/install/share/perl6/site/bin:$PATH\neval "$(/root/.rakudobrew/moar-2019.03.1/install/share/perl6/site/bin/rakudobrew init -)"' >> /etc/profile \
+    && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
+    && echo 'eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"' >> /etc/profile \
     && cat /etc/profile \
+    && eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"\
     && rakudobrew build moar 2019.03.1 \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
-    && git clone https://github.com/ugexe/zef.git \
-    && prove -v -e 'perl6 -I zef/lib' zef/t \
-    && perl6 -Izef/lib zef/bin/zef --verbose install ./zef \
+    && rakudobrew global moar-2019.03.1 \
+    && rakudobrew build-zef\
+    && which perl6 \
     && which zef \
     && zef install Linenoise \
     && apk del $PKGS_TMP \
