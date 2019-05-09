@@ -1,5 +1,5 @@
 FROM alpine:latest
-LABEL version="2.0.7" maintainer="JJMerelo@GMail.com" perl6version="2019.03.1"
+LABEL version="2.0.8" maintainer="JJMerelo@GMail.com" perl6version="2019.03.1"
 
 # Environment
 ENV PATH="/root/.rakudobrew/bin/../versions/moar-2019.03.1/install/bin:/root/.rakudobrew/bin/../versions/moar-2019.03.1/install/share/perl6/site/bin:/root/.rakudobrew/bin:${PATH}" \
