@@ -29,4 +29,4 @@ RUN apk update && apk upgrade \
 
 # Runtime
 WORKDIR /root
-ENTRYPOINT ["perl6"]
+ENTRYPOINT perl6
