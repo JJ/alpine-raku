@@ -2,7 +2,7 @@ FROM alpine:latest
 LABEL version="2.0.7" maintainer="JJMerelo@GMail.com" perl6version="2019.03.1"
 
 # Environment
-ENV PATH="/root/.rakudobrew/bin:/root/.rakudobrew/moar-2019.03.1/install/share/perl6/site/bin:${PATH}" \
+ENV PATH="/home/jmerelo/.rakudobrew/bin/../versions/moar-2019.03.1/install/bin:/home/jmerelo/.rakudobrew/bin/../versions/moar-2019.03.1/install/share/perl6/site/bin:/home/jmerelo/.rakudobrew/bin:${PATH}" \
     PKGS="curl git perl" \
     PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget"
 
@@ -25,9 +25,7 @@ RUN apk update && apk upgrade \
     && apk del $PKGS_TMP \
     && RAKUDO_VERSION=`sed "s/\n//" /root/.rakudobrew/CURRENT` \
        rm -rf /root/.rakudobrew/${RAKUDO_VERSION}/src /root/zef \
-       /root/.rakudobrew/git_reference \
-    # Print this as a check (really unnecessary)
-    && rakudobrew init
+       /root/.rakudobrew/git_reference
 
 # Runtime
 WORKDIR /root
