@@ -13,6 +13,7 @@ RUN apk update && apk upgrade \
     && echo 'eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"' >> /etc/profile \
     && cat /etc/profile \
     && eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"\
+    && echo "export PATH=$PATH" > /etc/environment \
     && rakudobrew build moar 2019.03.1 \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
