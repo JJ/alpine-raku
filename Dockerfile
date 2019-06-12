@@ -3,8 +3,8 @@ LABEL version="2.0.9" maintainer="JJMerelo@GMail.com" perl6version="2019.03.1"
 
 # Environment
 ENV PATH="/root/.rakudobrew/bin/../versions/moar-2019.03.1/install/bin:/root/.rakudobrew/bin/../versions/moar-2019.03.1/install/share/perl6/site/bin:/root/.rakudobrew/bin:${PATH}" \
-    PKGS="curl git perl" \
-    PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget" \
+    PKGS="curl git" \
+    PKGS_TMP="perl curl-dev linux-headers make gcc musl-dev wget" \
     ENV="/root/.profile"
 
 # Basic setup, programs and init
@@ -14,11 +14,9 @@ RUN apk update && apk upgrade \
     && echo 'eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"' >> ~/.profile \
     && eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"\
     && rakudobrew build moar 2019.03.1 \
-    && curl -L https://cpanmin.us | perl - App::cpanminus \
-    && cpanm Test::Harness --no-wget \
     && rakudobrew global moar-2019.03.1 \
     && rakudobrew build-zef\
-    && zef install Linenoise \
+    && zef install Linenoise App::Prove6\
     && apk del $PKGS_TMP \
     && RAKUDO_VERSION=`sed "s/\n//" /root/.rakudobrew/CURRENT` \
        rm -rf /root/.rakudobrew/${RAKUDO_VERSION}/src /root/zef \
