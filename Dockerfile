@@ -1,5 +1,5 @@
 FROM alpine:latest
-LABEL version="2.0.8" maintainer="JJMerelo@GMail.com" perl6version="2019.03.1"
+LABEL version="2.0.9" maintainer="JJMerelo@GMail.com" perl6version="2019.03.1"
 
 # Environment
 ENV PATH="/root/.rakudobrew/bin/../versions/moar-2019.03.1/install/bin:/root/.rakudobrew/bin/../versions/moar-2019.03.1/install/share/perl6/site/bin:/root/.rakudobrew/bin:${PATH}" \
@@ -18,8 +18,6 @@ RUN apk update && apk upgrade \
     && cpanm Test::Harness --no-wget \
     && rakudobrew global moar-2019.03.1 \
     && rakudobrew build-zef\
-    && which perl6 \
-    && which zef \
     && zef install Linenoise \
     && apk del $PKGS_TMP \
     && RAKUDO_VERSION=`sed "s/\n//" /root/.rakudobrew/CURRENT` \
