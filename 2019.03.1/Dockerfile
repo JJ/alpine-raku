@@ -2,9 +2,10 @@ FROM alpine:latest
 LABEL version="2.0.6" maintainer="JJMerelo@GMail.com" perl6version="2019.03.1"
 
 # Environment
-ENV PATH="/root/.rakudobrew/bin:/root/.rakudobrew/moar-2019.03.1/install/share/perl6/site/bin:${PATH}" \
+ENV PATH="/root/.rakudobrew/versions/moar-2019.03.1/install/bin:/root/.rakudobrew/versions/moar-2019.03.1/install/share/perl6/site/bin:${PATH}" \
     PKGS="curl git perl" \
-    PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget"
+    PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget"\
+    VER="2019.03.1"
 
 # Basic setup, programs and init
 RUN apk update && apk upgrade \
@@ -12,7 +13,8 @@ RUN apk update && apk upgrade \
     && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
     && echo 'eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"' >> ~/.profile \
     && eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"\
-    && rakudobrew build moar 2019.03.1 \
+    && rakudobrew build moar $VER \
+    && rakudobrew global moar-$VER \
     && curl -L https://cpanmin.us | perl - App::cpanminus \
     && cpanm Test::Harness --no-wget \
     && git clone https://github.com/ugexe/zef.git \
