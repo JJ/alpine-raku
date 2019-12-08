@@ -9,7 +9,8 @@ ENV PATH="/root/.rakudobrew/versions/moar-2019.11/install/bin:/root/.rakudobrew/
     VER="2019.11"
 
 # Basic setup, programs and init
-RUN apk update && apk upgrade \
+RUN mkdir /home/raku \
+    && apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP \
     && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
     && echo 'eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"' >> ~/.profile \
@@ -24,6 +25,6 @@ RUN apk update && apk upgrade \
        /root/.rakudobrew/git_reference
 
 # Runtime
-WORKDIR /root
+WORKDIR /home/raku
 ENTRYPOINT ["raku"]
 
