@@ -4,7 +4,6 @@ A Docker container with Perl 6 using the minimalist Linux distro Alpine.
 
 It includes
 
-* Rakudobrew
 * Perl6, latest version
 * `zef` for module installation
 * [Linenoise](https://github.com/hoelzro/p6-linenoise) for easy shell use.
