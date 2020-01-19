@@ -7,9 +7,7 @@ It includes
 * Perl6, latest version
 * `zef` for module installation
 * [Linenoise](https://github.com/hoelzro/p6-linenoise) for easy shell use.
-* perl, needed to run rakudobrew
 * `curl` which is needed for some other downstream compatibilities.
-* `cpan` which is needed to install some Perl5 modules
 
 New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/).
 
