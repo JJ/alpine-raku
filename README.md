@@ -1,16 +1,13 @@
 # alpine-perl6 [![Build Status](https://travis-ci.org/JJ/alpine-perl6.svg?branch=master)](https://travis-ci.org/JJ/alpine-perl6)
 
-A Docker container with Perl 6 using the minimalist Linux distro Alpine. 
+A Docker container with Raku using the minimalist Linux distro Alpine.
 
 It includes
 
-* Rakudobrew
 * Perl6, latest version
 * `zef` for module installation
 * [Linenoise](https://github.com/hoelzro/p6-linenoise) for easy shell use.
-* perl, needed to run rakudobrew
 * `curl` which is needed for some other downstream compatibilities.
-* `cpan` which is needed to install some Perl5 modules
 
 New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/).
 
@@ -79,7 +76,7 @@ Or directly in a single command
 	docker run -it --rm  --entrypoint=/bin/sh jjmerelo/alpine-perl6 -c "zef install Math::Sequences"
 
 
-This overrides the default entrypoint and, instead, runs `zef` as a shell command
+This overrides the default entrypoint and, instead, runs `zef` as a shell command, installing the module within the container.
 
 ## More one-liners for demos
 
@@ -89,8 +86,10 @@ Check out the [Madhava-Leibniz series that computes the digits of Pi](https://gi
 
 Contributions, suggestions and patches are welcome.
 
-## Notes on the last version
+## Previous versions
 
-This version has been updated to the state of Rakudo Perl in February
-2019, despite the absence of the 2019.x versions. It's mainly due to a
-(possibly) breaking change in the location of the index files.
+Previous versions of perl6/raku are available also as image tags. For instance, you can do
+
+   docker run -t jjmerelo/alpine-perl6:2019.07 -e "'hello þor'.say"
+   
+to download and/or run the 2019.07 version of this container.
