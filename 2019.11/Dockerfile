@@ -1,13 +1,12 @@
 FROM alpine:latest
-LABEL version="2.3" maintainer="JJMerelo@GMail.com" perl6version="2020.01"
+LABEL version="2.2" maintainer="JJMerelo@GMail.com" perl6version="2019.11"
 
 # Environment
-ENV VER="2020.01"\
-    PATH="/root/.rakudobrew/versions/moar-$VER/install/bin:/root/.rakudobrew/versions/moar-$VER/install/share/perl6/site/bin:/root/.rakudobrew/bin:${PATH}" \
+ENV PATH="/root/.rakudobrew/versions/moar-2019.11/install/bin:/root/.rakudobrew/versions/moar-2019.11/install/share/perl6/site/bin:/root/.rakudobrew/bin:${PATH}" \
     PKGS="curl git perl" \
     PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget" \
-    ENV="/root/.profile"
-    
+    ENV="/root/.profile" \
+    VER="2019.11"
 
 # Basic setup, programs and init
 RUN apk update && apk upgrade \
