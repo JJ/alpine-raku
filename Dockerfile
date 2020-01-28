@@ -1,9 +1,10 @@
 FROM alpine:latest
-LABEL version="2.3" maintainer="JJMerelo@GMail.com" perl6version="2020.01"
 
 # Environment
-ENV VER="2020.01"\
-    PATH="/root/.rakudobrew/versions/moar-$VER/install/bin:/root/.rakudobrew/versions/moar-$VER/install/share/perl6/site/bin:/root/.rakudobrew/bin:${PATH}" \
+ARG VER="2020.01"
+LABEL version="2.3" maintainer="JJMerelo@GMail.com" perl6version=$VER
+
+ENV PATH="/root/.rakudobrew/versions/moar-${VER}/install/bin:/root/.rakudobrew/versions/moar-${VER}/install/share/perl6/site/bin:/root/.rakudobrew/bin:${PATH}" \
     PKGS="curl git perl" \
     PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget" \
     ENV="/root/.profile"
