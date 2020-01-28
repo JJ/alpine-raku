@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Environment
-ARG VER="2018.04"
+ARG VER="2018.03"
 LABEL version="2.3" maintainer="JJMerelo@GMail.com" perl6version=$VER
 
 ENV PATH="/root/.rakudobrew/versions/moar-${VER}/install/bin:/root/.rakudobrew/versions/moar-${VER}/install/share/perl6/site/bin:${PATH}" \
