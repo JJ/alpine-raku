@@ -1,33 +1,30 @@
 FROM alpine:latest
-WORKDIR /root
-ENTRYPOINT ["perl6"]
-LABEL version="2.0" maintainer="JJMerelo@GMail.com" perl6version="2018.01"
 
-#Basic setup and programs
+# Environment
+ARG VER="2018.04"
+LABEL version="2.3" maintainer="JJMerelo@GMail.com" perl6version=$VER
+
+ENV PATH="/root/.rakudobrew/versions/moar-${VER}/install/bin:/root/.rakudobrew/versions/moar-${VER}/install/share/perl6/site/bin:${PATH}" \
+    PKGS="curl git perl" \
+    PKGS_TMP="curl-dev linux-headers make gcc musl-dev wget"
+
+# Basic setup, programs and init
 RUN apk update && apk upgrade \
-    && apk add gcc git linux-headers make musl-dev perl wget curl-dev curl
-
-#Download and install rakudo
-RUN git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew
-RUN echo 'export PATH=~/.rakudobrew/bin:$PATH\neval "$(/root/.rakudobrew/bin/rakudobrew init -)"' >> /etc/profile
-ENV PATH="/root/.rakudobrew/bin:${PATH}"
-
-#Build moar
-RUN rakudobrew build moar 2018.01
-
-#Build zef
-RUN curl -L https://cpanmin.us | perl - App::cpanminus
-RUN cpanm Test::Harness --no-wget
-RUN git clone https://github.com/ugexe/zef.git && prove -v -e 'perl6 -I zef/lib' zef/t && perl6 -Izef/lib zef/bin/zef --verbose install ./zef
-RUN rakudobrew rehash
-
-#Install the rest of the stuff
-RUN zef install Linenoise
-
-#Clean up a bit
-RUN apk del gcc linux-headers make musl-dev curl-dev
-RUN version=`sed "s/\n//" /root/.rakudobrew/CURRENT` && rm -rf /root/.rakudobrew/${version}/src
-RUN rm -rf /root/.rakudobrew/git_reference /root/zef
+    && apk add --no-cache $PKGS $PKGS_TMP \
+    && git clone https://github.com/tadzik/rakudobrew ~/.rakudobrew \
+    && echo 'eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"' >> ~/.profile \
+    && eval "$(~/.rakudobrew/bin/rakudobrew init Sh)"\
+    && rakudobrew build moar $VER \
+    && rakudobrew global moar-$VER \
+    && curl -L https://cpanmin.us | perl - App::cpanminus \
+    && cpanm Test::Harness --no-wget \
+    && git clone https://github.com/ugexe/zef.git \
+    && rakudobrew build-zef \
+    && zef install Linenoise \
+    && apk del $PKGS_TMP \
+    && RAKUDO_VERSION=`sed "s/\n//" /root/.rakudobrew/CURRENT` \
+       rm -rf /root/.rakudobrew/${RAKUDO_VERSION}/src /root/zef \
+       /root/.rakudobrew/git_reference
 
 # Print this as a check (really unnecessary) 
 RUN rakudobrew init

@@ -49,12 +49,12 @@ This will return
 
 And then
 
-	-E  docker run -t -v `pwd`:/root/p6-app jjmerelo/alpine-perl6 /root/p6-app/pell.p6 6
+	docker run -t -v `pwd`:/root/p6-app jjmerelo/alpine-perl6 /root/p6-app/pell.p6 6
 
 
 which would return the first 6 [Pell numbers](https://en.wikipedia.org/wiki/Pell_number). Or
 
-	-E  docker run -t -v `pwd`:/root/p6-app jjmerelo/alpine-perl6 /root/p6-app/horadam.p6 10
+	docker run -t -v `pwd`:/root/p6-app jjmerelo/alpine-perl6 /root/p6-app/horadam.p6 10
 
 
 which will return the 10 first elements of the [Horadam sequence](http://mathworld.wolfram.com/HoradamSequence.html) for p=0, q=1, r= 0.25, s=0.75.
