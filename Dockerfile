@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 ARG VER="2020.01"
-LABEL version="2.3.1" maintainer="JJMerelo@GMail.com" perl6version=$VER
+LABEL version="2.3.2" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Environment
 ENV PATH="/root/raku-install/bin:/root/raku-install/share/perl6/site/bin:/root/.rakudobrew/bin:${PATH}" \
