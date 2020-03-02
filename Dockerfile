@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ARG VER="2020.02"
+ARG VER="2020.02.1"
 LABEL version="2.3.2" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Environment
