@@ -1,12 +1,12 @@
 FROM alpine:latest
 
-ARG VER="2020.07"
-LABEL version="2.3.3" maintainer="JJMerelo@GMail.com" rakuversion=$VER
+ARG VER="2020.06"
+LABEL version="2.3.2" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Environment
 ENV PATH="/root/raku-install/bin:/root/raku-install/share/perl6/site/bin:/root/.rakudobrew/bin:${PATH}" \
-    PKGS="curl git make gcc musl-dev" \
-    PKGS_TMP="perl curl-dev linux-headers wget" \
+    PKGS="curl git" \
+    PKGS_TMP="perl curl-dev linux-headers make gcc musl-dev wget" \
     ENV="/root/.profile"
 
 # Basic setup, programs and init
