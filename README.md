@@ -28,33 +28,31 @@ to get into the perl6 interpreter REPL. Can also be used as a "binary" this way
 or you can get into the container by running
 
 	docker run -it --entrypoint sh -l -c jjmerelo/alpine-raku
-	
 
 You can also run external scripts via the mounted `/app` volume. After changing to this directory
 
 	docker run -v `pwd`:/app -it  jjmerelo/alpine-raku /app/heloþor.p6
-	
 
 This `heloþor.p6` is the example provided in this repo, which you should have cloned or downloaded in the usual way. Check out the use of þ. Cool, isn't it? You can use any other directory instead of `/app`
 
 For instance, we can create a directory this way
 
-	docker run -t jjmerelo/alpine-raku -e "mkdir 'p6-app'; say 'p6-app'.IO.abspath;"
-	
+	docker run --rm -t jjmerelo/alpine-raku -e "mkdir 'p6-app'; say 'p6-app'.IO.absolute;"
+
 
 This will return
-	
-	/root/p6-app
+
+	/home/raku/p6-app
 
 
 And then
 
-	docker run -t -v `pwd`:/root/p6-app jjmerelo/alpine-raku /root/p6-app/pell.p6 6
+	docker run -t -v `pwd`:/home/raku/p6-app jjmerelo/alpine-raku /home/raku/p6-app/pell.p6 6
 
 
 which would return the first 6 [Pell numbers](https://en.wikipedia.org/wiki/Pell_number). Or
 
-	docker run -t -v `pwd`:/root/p6-app jjmerelo/alpine-raku /root/p6-app/horadam.p6 10
+	docker run -t -v `pwd`:/home/raku/p6-app jjmerelo/alpine-raku /home/raku/p6-app/horadam.p6 10
 
 
 which will return the 10 first elements of the [Horadam sequence](http://mathworld.wolfram.com/HoradamSequence.html) for p=0, q=1, r= 0.25, s=0.75.
