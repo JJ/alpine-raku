@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 ARG VER="2020.08"
-LABEL version="3.0.0" maintainer="JJMerelo@GMail.com" rakuversion=$VER
+LABEL version="3.1.0" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Set up as root
 ENV PKGS="curl git make gcc musl-dev" \
@@ -23,12 +23,11 @@ RUN curl https://rakubrew.org/install-on-perl.sh | bash \
     && echo eval "$(/home/raku/.rakubrew/bin/rakubrew init Sh)" >> ~/.profile \
     && source ~/.profile \
     && rakubrew build moar $VER --configure-opts='--prefix=/home/raku/.raku' \
-    && rm -rf .profile /home/raku/.rakubrew/versions/moar-$VER \
     && rakubrew register moar-$VER /home/raku/.raku \
     && rakubrew global moar-$VER \
     && rakubrew build-zef \
     && zef install Linenoise App::Prove6 \
-    && rm -rf /home/raku/.rakubrew /home/raku/zef
+    && rm -rf .profile /home/raku/.rakubrew /home/raku/zef
 
 USER root
 RUN apk del $PKGS_TMP
