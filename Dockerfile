@@ -23,6 +23,7 @@ RUN curl https://rakubrew.org/install-on-perl.sh | bash \
     && echo eval "$(/home/raku/.rakubrew/bin/rakubrew init Sh)" >> ~/.profile \
     && source ~/.profile \
     && rakubrew build moar $VER --configure-opts='--prefix=/home/raku/.raku' \
+    && rm -rf /home/raku/.rakubrew/versions/moar-$VER \
     && rakubrew register moar-$VER /home/raku/.raku \
     && rakubrew global moar-$VER \
     && rakubrew build-zef \
