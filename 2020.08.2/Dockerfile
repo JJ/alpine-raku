@@ -1,11 +1,11 @@
 FROM alpine:latest
 
-ARG VER="2020.09"
+ARG VER="2020.08.2"
 LABEL version="3.1.0" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Set up as root
 ENV PKGS="curl git make gcc musl-dev" \
-        PKGS_TMP="perl curl-dev linux-headers bash"
+    PKGS_TMP="perl curl-dev linux-headers bash"
 
 RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP
