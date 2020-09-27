@@ -9,7 +9,7 @@ ENV PKGS="curl git make gcc musl-dev" \
 
 RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP
-    
+
 RUN addgroup -S raku  && adduser -S raku -G raku
 USER raku
 
