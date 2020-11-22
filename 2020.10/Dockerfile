@@ -8,8 +8,9 @@ ENV PKGS="curl git make gcc musl-dev" \
     PKGS_TMP="perl curl-dev linux-headers bash"
 
 RUN apk update && apk upgrade \
-    && apk add --no-cache $PKGS $PKGS_TMP \
-    && addgroup -S raku  && adduser -S raku -G raku
+    && apk add --no-cache $PKGS $PKGS_TMP
+
+RUN addgroup -S raku  && adduser -S raku -G raku
 USER raku
 
 # Environment
