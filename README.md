@@ -1,6 +1,6 @@
 # Alpine containers for Raku [![Build Status](https://travis-ci.org/JJ/alpine-raku.svg?branch=master)](https://travis-ci.org/JJ/alpine-raku)
 
-A Docker container with Raku using the minimalist Linux distro Alpine.
+A Docker container with Raku using the minimalist Linux distro [Alpine](https://alpinelinux.org/).
 
 It includes
 
@@ -8,6 +8,8 @@ It includes
 * `zef` for module installation
 * [Linenoise](https://github.com/hoelzro/p6-linenoise) for easy shell use.
 * `curl` which is needed for some other downstream compatibilities.
+* `gcc` and `musl-dev`, which you probably don't need, but can be used for NativeCall-related builds.
+
 
 New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/).
 
@@ -23,7 +25,6 @@ Use
 to get into the perl6 interpreter REPL. Can also be used as a "binary" this way
 
 	docker run -t jjmerelo/alpine-raku -e "say 'hello þor'"
-	
 
 or you can get into the container by running
 
