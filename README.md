@@ -8,8 +8,10 @@ It includes
 * `zef` for module installation
 * [Linenoise](https://github.com/hoelzro/p6-linenoise) for easy shell use.
 * `curl` which is needed for some other downstream compatibilities.
-* `gcc` and `musl-dev`, which you probably don't need, but can be used for NativeCall-related builds.
-
+* `gcc` and `musl-dev`, which you probably don't need, but can be used
+  for NativeCall-related builds.
+* User `raku` is defined from version 2020.07, and the Raku process is
+  run as a non-privileged user.
 
 New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/).
 
@@ -20,7 +22,6 @@ New images should be automatically available [at the Docker hub](https://hub.doc
 Use
 
 	docker run -it jjmerelo/alpine-raku
-
 
 to get into the perl6 interpreter REPL. Can also be used as a "binary" this way
 
@@ -68,7 +69,7 @@ Since `zef` is installed, you can use it to install new modules. You can do it b
 and then
 
 	zef install Math::Constants
-	
+
 
 Or directly in a single command
 
@@ -90,5 +91,11 @@ Contributions, suggestions and patches are welcome.
 Previous versions of perl6/raku are available also as image tags. For instance, you can do
 
    docker run -t jjmerelo/alpine-raku:2019.07 -e "'hello þor'.say"
-   
+
 to download and/or run the 2019.07 version of this container.
+
+## See also
+
+The [`raku-test` image](https://hub.docker.com/r/jjmerelo/raku-test)
+can be used directly for tests, no need to build your own based on
+this one.
