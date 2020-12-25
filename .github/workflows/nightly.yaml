@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: nightly/
-          file: ./Dockerfile
+          file: ./nightly/Dockerfile
           push: true
           tags: jjmerelo/alpine-raku:nightly
       - name: Image digest
