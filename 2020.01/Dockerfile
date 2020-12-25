@@ -20,7 +20,7 @@ RUN mkdir /home/raku \
 	&& rakudobrew register moar-$VER /root/raku-install \
     && rakudobrew global moar-$VER \
     && rakudobrew build-zef \
-    && zef install Linenoise App::Prove6 \
+    && zef install "Getopt::Long:ver<0.2.0>" Linenoise App::Prove6 \
     && apk del $PKGS_TMP \
     && rm -rf /root/.rakudobrew /root/raku-install/zef
 
