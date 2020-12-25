@@ -5,7 +5,10 @@ on:
   schedule:
       - cron: "2 0 * * *"
 
-  steps:
+jobs:
+  build-nightly:
+    runs-on: ubuntu-latest
+    steps:
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
