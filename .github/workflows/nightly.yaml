@@ -1,0 +1,24 @@
+name: CI to Docker hub
+
+on:
+  push:
+  schedule:
+      - cron: "2 0 * * *"
+
+  steps:
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: nightly/
+          file: ./Dockerfile
+          push: true
+          tags: jjmerelo/alpine-raku:nightly
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
