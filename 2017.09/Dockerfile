@@ -26,7 +26,7 @@ RUN curl https://rakubrew.org/install-on-perl.sh | bash \
     && rakubrew register moar-$VER /home/raku/.raku \
     && rakubrew global moar-$VER \
     && rakubrew build-zef \
-    && zef install "Getopt::Long:ver<0.2.0>"  Linenoise App::Prove6 \
+    && zef install "Getopt::Long:ver<0.1.8>"  Linenoise App::Prove6 \
     && rm -rf .profile /home/raku/.rakubrew /home/raku/zef
 
 USER root
