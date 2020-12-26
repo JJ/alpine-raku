@@ -1,7 +1,7 @@
 FROM alpine:latest
 
-ARG VER="2017.09"
-LABEL version="3.1.0" maintainer="JJMerelo@GMail.com" rakuversion=$VER
+ARG VER="2017.08"
+LABEL version="3.1.1" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Set up as root
 ENV PKGS="curl git make gcc musl-dev" \
@@ -26,7 +26,7 @@ RUN curl https://rakubrew.org/install-on-perl.sh | bash \
     && rakubrew register moar-$VER /home/raku/.raku \
     && rakubrew global moar-$VER \
     && rakubrew build-zef \
-    && zef install "Getopt::Long:ver<0.2.0>"  Linenoise App::Prove6 \
+    && zef install Linenoise \
     && rm -rf .profile /home/raku/.rakubrew /home/raku/zef
 
 USER root

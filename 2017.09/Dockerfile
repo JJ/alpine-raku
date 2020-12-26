@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 ARG VER="2017.09"
-LABEL version="3.1.0" maintainer="JJMerelo@GMail.com" rakuversion=$VER
+LABEL version="3.1.1" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Set up as root
 ENV PKGS="curl git make gcc musl-dev" \
