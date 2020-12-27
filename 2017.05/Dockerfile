@@ -25,6 +25,8 @@ RUN curl https://rakubrew.org/install-on-perl.sh | bash \
     && rm -rf /home/raku/.rakubrew/versions/moar-$VER \
     && rakubrew register moar-$VER /home/raku/.raku \
     && rakubrew global moar-$VER \
+    && git clone https://github.com/ugexe/zef.git \
+    && cd zef \
     && perl6 -Ilib bin/zef --verbose test . \
     && perl6 -Ilib bin/zef --verbose --/test --force install . \
     && zef install Linenoise \
