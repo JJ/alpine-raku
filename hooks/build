@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use v5.14;
+
+my $tags = qw(2020.01 2020.02 2020.05 2020.05.1 2020.06 2020.07 2020.08 2020.08.1 2020.08.2 2020.09 2020.10 2020.11 2020.12 2021.02 2021.02.1);
+
+for my $tag ( @tags ) {
+    say "👷 Building for $tag";
+    say "🚧 docker build -f hooks/root.Dockerfile --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag";
+    `docker build . -f hooks/root.Dockerfile --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag`;
+    `docker push jjmerelo/alpine-raku:$tag`;
+}
