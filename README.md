@@ -84,7 +84,7 @@ Check out the [Madhava-Leibniz series that computes the digits of Pi](https://gi
 
 ## Contributions
 
-Contributions, suggestions and patches are welcome.
+Contributions, suggestions and patches are welcome. Please go to the [GitHub repo](https://github.com/JJ/alpine-raku)
 
 ## Previous versions
 
@@ -93,6 +93,8 @@ Previous versions of perl6/raku are available also as image tags. For instance, 
    docker run -t jjmerelo/alpine-raku:2019.07 -e "'hello þor'.say"
 
 to download and/or run the 2019.07 version of this container.
+
+Additionally, a `nightly` tag contains a fresh image, built every night from Rakudo `HEAD`.
 
 ## See also
 
