@@ -5,10 +5,14 @@ use warnings;
 
 use v5.14;
 
-my $tags = qw(2020.01 2020.02 2020.05 2020.05.1 2020.06 2020.07 2020.08 2020.08.1 2020.08.2 2020.09 2020.10 2020.11 2020.12 2021.02 2021.02.1);
+my @tags = qw(2020.01 2020.02 2020.05 2020.05.1 2020.06 2020.07 2020.08 2020.08.1 2020.08.2 2020.09 2020.10 2020.11 2020.12 2021.02 2021.02.1);
 
 for my $tag ( @tags ) {
     say "👷 Building for $tag";
-    `docker build . -f Dockerfile --build-arg ARG=$tag -t jjmerelo/alpine-raku:$tag`;
+    `docker build . -f Dockerfile --build-arg VER=$tag -t jjmerelo/alpine-raku:$tag`;
     `docker push jjmerelo/alpine-raku:$tag`;
+    if ( $tag eq $tags[-1] ) {
+      `docker tag  jjmerelo/alpine-raku:$tag  jjmerelo/alpine-raku:latest`;
+      `docker push  jjmerelo/alpine-raku:latest`;
+    }
 }
