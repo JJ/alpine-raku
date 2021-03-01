@@ -9,7 +9,6 @@ my $tags = qw(2020.01 2020.02 2020.05 2020.05.1 2020.06 2020.07 2020.08 2020.08.
 
 for my $tag ( @tags ) {
     say "👷 Building for $tag";
-    say "🚧 docker build -f hooks/root.Dockerfile --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag";
-    `docker build . -f hooks/root.Dockerfile --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag`;
+    `docker build . -f Dockerfile --build-arg ARG=$tag -t jjmerelo/alpine-raku:$tag`;
     `docker push jjmerelo/alpine-raku:$tag`;
 }
