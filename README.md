@@ -13,7 +13,7 @@ It includes
 * User `raku` is defined from version 2020.07, and the Raku process is
   run as a non-privileged user.
 
-New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-perl6/).
+New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-raku/).
 
 > Please note that `wget` is installed by default in Alpine, but has some known issues. Use `curl` whenever possible.
 
@@ -23,7 +23,7 @@ Use
 
 	docker run -it jjmerelo/alpine-raku
 
-to get into the perl6 interpreter REPL. Can also be used as a "binary" this way
+to get into the raku interpreter REPL. Can also be used as a "binary" this way
 
 	docker run -t jjmerelo/alpine-raku -e "say 'hello þor'"
 
@@ -88,7 +88,7 @@ Contributions, suggestions and patches are welcome. Please go to the [GitHub rep
 
 ## Previous versions
 
-Previous versions of perl6/raku are available also as image tags. For instance, you can do
+Previous versions of raku are available also as image tags. For instance, you can do
 
    docker run -t jjmerelo/alpine-raku:2019.07 -e "'hello þor'.say"
 
