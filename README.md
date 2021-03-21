@@ -10,10 +10,10 @@ It includes
 * `curl` which is needed for some other downstream compatibilities.
 * `gcc` and `musl-dev`, which you probably don't need, but can be used
   for NativeCall-related builds.
-* User `raku` is defined from version 2020.07, and the Raku process is
+* User `raku` is defined from version/tag 2020.07, and the Raku process is
   run as a non-privileged user.
 
-New images should be automatically available [at the Docker hub](https://hub.docker.com/r/jjmerelo/alpine-raku/).
+New images should be automatically available [at Docker hub](https://hub.docker.com/r/jjmerelo/alpine-raku/).
 
 > Please note that `wget` is installed by default in Alpine, but has some known issues. Use `curl` whenever possible.
 
