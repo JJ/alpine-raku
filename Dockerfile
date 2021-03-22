@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 ARG VER="2021.03"
-LABEL version="3.1.1" maintainer="JJMerelo@GMail.com" rakuversion=$VER
+LABEL version="3.1.2" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Set up as root
 ENV PKGS="curl git make gcc musl-dev" \
@@ -13,7 +13,7 @@ RUN apk update && apk upgrade \
 USER raku
 
 # Environment
-ENV PATH="/home/raku/.raku/bin:/home/raku/.raku/share/perl6/site/bin:/home/raku/.rakudobrew/bin:${PATH}" \
+ENV PATH="/home/raku/.raku/bin:/home/raku/.raku/share/perl6/site/bin:${PATH}" \
     ENV="/home/raku/.profile"
 
 # Basic setup, programs and init
