@@ -39,32 +39,35 @@ This `heloþor.p6` is the example provided in this repo, which you should have c
 
 For instance, we can create a directory this way
 
-	docker run --rm -t jjmerelo/alpine-raku -e "mkdir 'p6-app'; say 'p6-app'.IO.absolute;"
+	docker run --rm -t jjmerelo/alpine-raku -e "mkdir 'raku-app'; say 'raku-app'.IO.absolute;"
 
 
 This will return
 
-	/home/raku/p6-app
+	/home/raku/raku-app
 
 
 And then
 
-	docker run -t -v `pwd`:/home/raku/p6-app jjmerelo/alpine-raku /home/raku/p6-app/pell.p6 6
+	docker run -t -v `pwd`:/home/raku/raku-app jjmerelo/alpine-raku /home/raku/raku-app/pell.p6 6
 
 
 which would return the first 6 [Pell numbers](https://en.wikipedia.org/wiki/Pell_number). Or
 
-	docker run -t -v `pwd`:/home/raku/p6-app jjmerelo/alpine-raku /home/raku/p6-app/horadam.p6 10
+	docker run -t -v `pwd`:/home/raku/raku-app jjmerelo/alpine-raku /home/raku/raku-app/horadam.p6 10
 
 
-which will return the 10 first elements of the [Horadam sequence](http://mathworld.wolfram.com/HoradamSequence.html) for p=0, q=1, r= 0.25, s=0.75.
+which will return the 10 first elements of the [Horadam
+sequence](http://mathworld.wolfram.com/HoradamSequence.html) for p=0,
+q=1, r= 0.25, s=0.75.
 
 ## Install new modules
 
-Since `zef` is installed, you can use it to install new modules. You can do it by getting into the container and running the shell:
+Since `zef` is included in the image, you can use it to install new
+modules. You can do it by getting into the container and running the
+shell:
 
 	docker run -it --entrypoint="/bin/sh" jjmerelo/alpine-raku
-
 
 and then
 
@@ -76,15 +79,25 @@ Or directly in a single command
 	docker run -it --rm  --entrypoint=/bin/sh jjmerelo/alpine-raku -c "zef install Math::Sequences"
 
 
-This overrides the default entrypoint and, instead, runs `zef` as a shell command, installing the module within the container.
+This overrides the default entrypoint and, instead, runs `zef` as a
+shell command, installing the module within the container.
 
 ## More one-liners for demos
 
-Check out the [Madhava-Leibniz series that computes the digits of Pi](https://gist.github.com/JJ/eb09eefe5f2bd8ae7d0ea332378a51b9) or [the binomial coefficients](https://gist.github.com/JJ/a8634b671e78eda37dc513c6dec68294)
+Check out the [Madhava-Leibniz series that computes the digits of
+Pi](https://gist.github.com/JJ/eb09eefe5f2bd8ae7d0ea332378a51b9) or
+[the binomial
+coefficients](https://gist.github.com/JJ/a8634b671e78eda37dc513c6dec68294). Run
+them directly thus:
+
+```shell
+docker run -t --rm jjmerelo/alpine-raku -e "say π  - 4 * ([+]  <1 -1> <</<<  (1,3,5,7,9...10000))  "
+```
 
 ## Contributions
 
-Contributions, suggestions and patches are welcome. Please go to the [GitHub repo](https://github.com/JJ/alpine-raku)
+Contributions, suggestions and patches are welcome. Please go to the
+[GitHub repo](https://github.com/JJ/alpine-raku).
 
 ## Previous versions
 
