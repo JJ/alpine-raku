@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ARG VER="2021.03"
+ARG VER="2021.04"
 LABEL version="3.1.1" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Set up as root
