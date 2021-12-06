@@ -1,4 +1,4 @@
-ARG VER="latest"
+ARG VER="2021.10"
 FROM jjmerelo/raku:${VER}
 
 ENV PKGS="git"
