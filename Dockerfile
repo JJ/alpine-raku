@@ -17,6 +17,6 @@ WORKDIR /home/raku
 RUN git clone https://github.com/ugexe/zef.git \
     && cd zef \
     && raku -I. bin/zef install . \
-    && zef install Linenoise App::Prove6 \
+    && zef install Linenoise
 
 ENTRYPOINT ["raku"]
