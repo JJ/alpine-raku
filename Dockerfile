@@ -1,5 +1,5 @@
-ARG VER="2021.09"
-FROM jjmerelo/raku:latest
+ARG VER="latest"
+FROM jjmerelo/raku:${VER}
 
 ENV PKGS="git"
 LABEL version="4.0.0" maintainer="JJMerelo@GMail.com" rakuversion=$VER
