@@ -5,7 +5,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push-image:
@@ -25,10 +24,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and pushing container image
+      - name: Build and push container image
         uses: docker/build-push-action@v2.7.0
         with:
           context: .
           push: true
-          tags: ghcr.io/jj/raku-test
+          tags: ${{ env.REGISTRY }}/jj/raku-test
 
