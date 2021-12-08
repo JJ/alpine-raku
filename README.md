@@ -1,4 +1,4 @@
-# Alpine containers for Raku [![Build Status](https://travis-ci.com/github/JJ/alpine-raku.svg?branch=master)](https://travis-ci.com/github/JJ/alpine-raku)
+# Alpine containers for Raku
 
 A Docker container with Raku using the minimalist Linux distro [Alpine](https://alpinelinux.org/).
 
