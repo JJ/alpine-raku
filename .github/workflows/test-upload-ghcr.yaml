@@ -23,11 +23,10 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push container image
         uses: docker/build-push-action@v2.7.0
         with:
-          context: .
           push: true
           tags: jjmerelo/raku-test
