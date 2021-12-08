@@ -28,7 +28,7 @@ jobs:
       - name: Build and pushing container image
         uses: docker/build-push-action@v2.7.0
         with:
+          context: .
           push: true
           tags: jjmerelo/raku-test
-          secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.GHCR_TOKEN }}
+
