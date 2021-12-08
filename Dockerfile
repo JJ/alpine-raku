@@ -2,7 +2,7 @@ ARG VER="2021.10"
 FROM jjmerelo/raku:${VER}
 
 ENV PKGS="git" PKGS_TMP="make gcc linux-headers musl-dev"
-LABEL version="4.0.0" maintainer="JJMerelo@GMail.com" rakuversion=$VER
+LABEL version="4.0.1" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 USER root
 RUN apk update && apk upgrade && apk add --no-cache $PKGS $PKGS_TMP
