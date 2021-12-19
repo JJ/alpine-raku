@@ -12,11 +12,12 @@ my @gha_tags = map { "gha-$_"} @tags ;
 push( @tags, @gha_tags );
 
 for my $tag ( @tags ) {
-    say "👷 Building for $tag";
-    `docker build . -f Dockerfile --build-arg VER=$tag -t jjmerelo/alpine-raku:$tag`;
-    `docker push jjmerelo/alpine-raku:$tag`;
-    if ( $tag eq $tags[-1] ) {
-      `docker tag  jjmerelo/alpine-raku:$tag  jjmerelo/alpine-raku:latest`;
-      `docker push  jjmerelo/alpine-raku:latest`;
-    }
+  my $workdir = $tag ~= /gha/ ? "/github/home" : "/home/raku";
+  say "👷 Building for $tag";
+  `docker build . -f Dockerfile --build-arg VER=$tag --build-arg WORKDIR=$workdir -t jjmerelo/alpine-raku:$tag`;
+  `docker push jjmerelo/alpine-raku:$tag`;
+  if ( $tag eq $tags[-1] ) {
+    `docker tag  jjmerelo/alpine-raku:$tag  jjmerelo/alpine-raku:latest`;
+    `docker push  jjmerelo/alpine-raku:latest`;
+  }
 }
