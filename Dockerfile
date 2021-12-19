@@ -15,8 +15,7 @@ ENV PATH="/home/raku/.raku/bin:/home/raku/.raku/share/perl6/site/bin:${PATH}" \
 # Basic setup, programs and init
 WORKDIR /home/raku
 RUN git clone --depth 1 https://github.com/ugexe/zef.git \
-    && cd zef \
-    && raku -I. bin/zef install . \
+    && cd zef && raku -I. bin/zef install . \
     && zef install Linenoise \
     && cd .. && rm -rf zef
 
