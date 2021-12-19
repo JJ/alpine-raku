@@ -10,15 +10,13 @@ USER root
 RUN apk update && apk upgrade && apk add --no-cache $PKGS $PKGS_TMP
 USER raku
 
-# Environment
 ENV PATH="$WORKDIR/.raku/bin:$WORKDIR/.raku/share/perl6/site/bin:${PATH}" \
     ENV="$WORKDIR/.profile"
 
-# Basic setup, programs and init
 WORKDIR ${WORKDIR}
 RUN echo $PATH\
     && git clone --depth 1 https://github.com/ugexe/zef.git \
-    && cd zef && raku -I. bin/zef install --install-to=${WORKDIR}/.raku . \
+    && cd zef && raku -I. bin/zef install . \
     && zef install Linenoise \
     && cd .. && rm -rf zef
 

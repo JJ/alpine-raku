@@ -12,7 +12,6 @@ my @gha_tags = map { "gha-$_"} @tags ;
 push( @tags, @gha_tags );
 
 for my $tag ( @tags ) {
-  my $workdir = $tag ~= /gha/ ? "/github/home" : "/home/raku";
   say "👷 Building for $tag";
   `docker build . -f Dockerfile --build-arg VER=$tag -t jjmerelo/alpine-raku:$tag`;
   `docker push jjmerelo/alpine-raku:$tag`;
