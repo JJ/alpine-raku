@@ -1,6 +1,8 @@
 # Alpine containers for Raku [![Test-create and publish a Docker image](https://github.com/JJ/alpine-raku/actions/workflows/test-upload-ghcr.yaml/badge.svg)](https://github.com/JJ/alpine-raku/actions/workflows/test-upload-ghcr.yaml)
 
-A Docker container with Raku using the minimalist Linux distro [Alpine](https://alpinelinux.org/).
+A Docker container with Raku using the minimalist Linux distro
+[Alpine](https://alpinelinux.org/), essentially [the Raku
+baseline](https://hub.docker.com/r/jjmerelo/raku) with zef.
 
 It includes
 
