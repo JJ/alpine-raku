@@ -3,7 +3,7 @@ name: Test-create and publish a Docker image
 on:
   push:
     paths:
-      - Dockerfile
+      - *Dockerfile
 
 env:
   REGISTRY: ghcr.io
@@ -26,10 +26,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push container image
+      - name: Build and push regular image
         uses: docker/build-push-action@v2.7.0
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/jj/raku-test
+          tags: ${{ env.REGISTRY }}/jj/raku-zef
 
+      - name: Build and push github actions image
+        uses: docker/build-push-action@v2.7.0
+        with:
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/jj/gha-raku-zef
