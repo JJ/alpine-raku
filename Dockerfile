@@ -18,7 +18,7 @@ ENV PATH="$WORKDIR/.raku/bin:$WORKDIR/.raku/share/perl6/site/bin:${PATH}" \
 WORKDIR ${WORKDIR}
 RUN echo $PATH\
     && git clone --depth 1 https://github.com/ugexe/zef.git \
-    && cd zef && raku -I. bin/zef install . \
+    && cd zef && raku -I. bin/zef install --install-to=${WORKDIR}/.raku . \
     && zef install Linenoise \
     && cd .. && rm -rf zef
 
