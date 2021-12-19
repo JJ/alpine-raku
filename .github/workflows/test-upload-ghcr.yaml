@@ -1,9 +1,11 @@
-name: Test-create and publish a Docker image
+name: Test-create and publish Docker images
 
 on:
   push:
     paths:
-      - *Dockerfile
+      - Dockerfile
+      - github-actions.Dockerfile
+      - .github/workflows/test-upload-ghcr.yaml
 
 env:
   REGISTRY: ghcr.io
