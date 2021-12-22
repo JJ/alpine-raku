@@ -17,7 +17,7 @@ WORKDIR ${WORKDIR}
 RUN echo $PATH\
     && git clone --depth 1 https://github.com/ugexe/zef.git \
     && cd zef && raku -I. bin/zef install . \
-    && zef install Linenoise \
+    && zef install Linenoise\
     && cd .. && rm -rf zef
 
 USER root
