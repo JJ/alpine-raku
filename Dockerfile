@@ -4,6 +4,7 @@ FROM jjmerelo/raku:${VER}
 ARG WORKDIR="/home/raku"
 
 ENV PKGS="git" PKGS_TMP="make gcc linux-headers musl-dev"
+
 LABEL version="4.0.1" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 USER root
@@ -12,6 +13,7 @@ USER raku
 
 ENV PATH="$WORKDIR/.raku/bin:$WORKDIR/.raku/share/perl6/site/bin:${PATH}" \
     ENV="$WORKDIR/.profile"
+    RAKULIB="inst#/home/raku/.raku"
 
 WORKDIR ${WORKDIR}
 RUN echo $PATH\
