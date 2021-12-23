@@ -1,7 +1,7 @@
 FROM ghcr.io/jj/raku-gha
 
 ENV PKGS="git" PKGS_TMP="make gcc linux-headers musl-dev" WORKDIR="/home/raku"
-LABEL version="1.0.2" maintainer="JJMerelo@GMail.com" rakuversion=$VER
+LABEL version="1.0.3" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 USER root
 RUN apk update && apk upgrade && apk add --no-cache $PKGS $PKGS_TMP
@@ -9,7 +9,8 @@ USER raku
 
 # Environment
 ENV PATH="${WORKDIR}/.raku/bin:${WORKDIR}/.raku/share/perl6/site/bin:${PATH}" \
-    ENV="${WORKDIR}/.profile"
+    ENV="${WORKDIR}/.profile"\
+    RAKULIB="inst#/home/raku/.raku"
 
 # Basic setup, programs and init
 WORKDIR $WORKDIR

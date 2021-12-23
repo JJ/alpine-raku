@@ -41,4 +41,4 @@ jobs:
           context: .
           file: github-actions.Dockerfile
           push: true
-          tags: ${{ env.REGISTRY }}/jj/gha-raku-zef
+          tags: ${{ env.REGISTRY }}/jj/raku-zef-gha
