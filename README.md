@@ -8,22 +8,16 @@ It includes
 
 * Raku (Rakudo - NQP - MoarVM), latest version, as well as older versions in tags/subdirectories
 * `zef` for module installation
-* [Linenoise](https://github.com/hoelzro/p6-linenoise) for easy shell use.
+* [Linenoise](https://github.com/hoelzro/p6-linenoise) for REPL easiness.
 * User `raku` is defined from version/tag 2020.07, and the Raku process is
   run as a non-privileged user. `zef` is installed for that non-privileged user,
   it will not work if you use `root`
 
 New images should be automatically available [at Docker hub](https://hub.docker.com/r/jjmerelo/alpine-raku/).
 
-> Please note that `wget` is installed by default in Alpine, but has some known
-> issues. Use `curl` whenever possible, although you'll have to install it
-> yourself.
-
 This comes in two flavors: regular and `gha`. Main difference is that the second
 uses `1001` as UID for the `raku` user, and then theoretically can be used as a
 GitHub action runner.
-
-> Unchecked yet, still work in progress.
 
 ## Working with this container
 
