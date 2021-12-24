@@ -6,7 +6,8 @@ baseline](https://hub.docker.com/r/jjmerelo/raku) with zef.
 
 It includes
 
-* Raku (Rakudo - NQP - MoarVM), latest version, as well as older versions in tags/subdirectories
+* Raku (Rakudo - NQP - MoarVM), latest version, as well as older versions in
+  tags/subdirectories as a base image.
 * `zef` for module installation
 * [Linenoise](https://github.com/hoelzro/p6-linenoise) for REPL easiness.
 * User `raku` is defined from version/tag 2020.07, and the Raku process is
