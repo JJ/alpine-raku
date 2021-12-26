@@ -1,4 +1,5 @@
 # Alpine containers for Raku [![Test-create and publish a Docker image](https://github.com/JJ/alpine-raku/actions/workflows/test-upload-ghcr.yaml/badge.svg)](https://github.com/JJ/alpine-raku/actions/workflows/test-upload-ghcr.yaml)
+[![Create and push to GHCR a multiarch image](https://github.com/JJ/alpine-raku/actions/workflows/upload-ghcr-multiarch.yaml/badge.svg)](https://github.com/JJ/alpine-raku/actions/workflows/upload-ghcr-multiarch.yaml)
 
 A Docker container with Raku using the minimalist Linux distro
 [Alpine](https://alpinelinux.org/), essentially [the Raku
@@ -16,9 +17,14 @@ It includes
 
 New images should be automatically available [at Docker hub](https://hub.docker.com/r/jjmerelo/alpine-raku/).
 
-This comes in two flavors: regular and `gha`. Main difference is that the second
+This comes in three flavors:
+
+* [regular](https://github.com/users/JJ/packages/container/package/raku-zef)
+* [`gha`](https://github.com/users/JJ/packages/container/package/raku-zef-gha). Main difference is that the second
 uses `1001` as UID for the `raku` user, and then theoretically can be used as a
 GitHub action runner.
+* [`multiarch`](https://github.com/JJ/alpine-raku/pkgs/container/raku-zef-multiarch),
+  a multiarch version that includes`arv/v7` `arm64` and `ppc64le`.
 
 ## Working with this container
 
@@ -74,12 +80,12 @@ shell:
 
 and then
 
-	zef install Math::Constants
+	$ zef install Math::Constants
 
 
 Or directly in a single command
 
-	docker run -it --rm  --entrypoint=/bin/sh jjmerelo/alpine-raku -c "zef install Math::Sequences"
+	docker run -it  --entrypoint=/bin/sh jjmerelo/alpine-raku -c "zef install Math::Sequences"
 
 
 This overrides the default entrypoint and, instead, runs `zef` as a
