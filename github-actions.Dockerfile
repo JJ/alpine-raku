@@ -1,6 +1,6 @@
 FROM ghcr.io/jj/raku-gha
 
-ENV PKGS="git" PKGS_TMP="make gcc linux-headers musl-dev" WORKDIR="/home/raku"
+ENV PKGS="git tar" PKGS_TMP="make gcc linux-headers musl-dev" WORKDIR="/home/raku"
 LABEL version="1.0.3" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 USER root
