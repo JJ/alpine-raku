@@ -1,6 +1,6 @@
 FROM ghcr.io/jj/raku-gha
 
-ENV PKGS="git tar" PKGS_TMP="make gcc linux-headers musl-dev" WORKDIR="/home/raku"
+ENV PKGS="git tar" PKGS_TMP="make gcc linux-headers musl-dev" WORKDIR="/home/raku" TESTDIR="${WORKDIR}/test"
 LABEL version="1.0.5" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 USER root
@@ -22,5 +22,7 @@ RUN git clone --depth 1 https://github.com/ugexe/zef.git \
 USER root
 RUN apk del $PGKS_TMP
 USER raku
+
+WORKDIR $TESTDIR
 
 ENTRYPOINT ["zef", "install", "."]
