@@ -23,4 +23,4 @@ USER root
 RUN apk del $PGKS_TMP
 USER raku
 
-ENTRYPOINT ["zef install ."]
+ENTRYPOINT ["zef", "install", "."]
