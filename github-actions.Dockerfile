@@ -1,7 +1,7 @@
 FROM ghcr.io/jj/raku-gha
 
 ENV PKGS="git tar" PKGS_TMP="make gcc linux-headers musl-dev" WORKDIR="/home/raku" TESTDIR="/home/raku/test"
-LABEL version="1.0.5" maintainer="JJMerelo@GMail.com" rakuversion=$VER
+LABEL version="1.0.5" maintainer="JJMerelo@GMail.com"
 
 USER root
 RUN apk update && apk upgrade && apk add --no-cache $PKGS $PKGS_TMP
