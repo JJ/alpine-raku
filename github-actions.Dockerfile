@@ -8,7 +8,7 @@ RUN apk update && apk upgrade && apk add --no-cache $PKGS $PKGS_TMP
 USER raku
 
 # Environment
-ENV PATH="${WORKDIR}/.raku/bin:${WORKDIR}/.raku/share/perl6/site/bin:${PATH}" \
+ENV PATH="${WORKDIR}/.raku/bin:${WORKDIR}/.raku/share/perl6/site/bin:/github/home/.raku/bin:${PATH}" \
     ENV="${WORKDIR}/.profile"\
     RAKULIB="inst#/home/raku/.raku"
 
