@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - Dockerfile
-      - github-actions.Dockerfile
+      - *.Dockerfile
       - .github/workflows/test-upload-ghcr.yaml
 
 env:
@@ -42,3 +42,11 @@ jobs:
           file: github-actions.Dockerfile
           push: true
           tags: ${{ env.REGISTRY }}/jj/raku-zef-gha
+
+      - name: Build and push github actions + coverage image
+        uses: docker/build-push-action@v2.7.0
+        with:
+          context: .
+          file: github-actions-coverage.Dockerfile
+          push: true
+          tags: ${{ env.REGISTRY }}/jj/raku-racoco-gha
