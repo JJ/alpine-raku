@@ -29,14 +29,14 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push regular image
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v3.2.0
         with:
           context: .
           push: true
           tags: ${{ env.REGISTRY }}/jj/raku-zef
 
       - name: Build and push github actions image
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v3.2.0
         with:
           context: .
           file: github-actions.Dockerfile
@@ -44,7 +44,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/jj/raku-zef-gha
 
       - name: Build and push github actions + coverage image
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v3.2.0
         with:
           context: .
           file: github-actions-coverage.Dockerfile
