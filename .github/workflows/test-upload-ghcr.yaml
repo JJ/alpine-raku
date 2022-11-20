@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - Dockerfile
-      - *.Dockerfile
+      - '*.Dockerfile'
       - .github/workflows/test-upload-ghcr.yaml
 
 env:
@@ -19,10 +19,10 @@ jobs:
 
     steps:
       - name: Checkout this
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Log in to GHCR
-        uses: docker/login-action@v1.10.0
+        uses: docker/login-action@v2
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
