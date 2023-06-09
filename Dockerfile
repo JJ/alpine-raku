@@ -1,4 +1,4 @@
-ARG VER="2021.10"
+ARG VER="2023.05"
 FROM jjmerelo/raku:${VER}
 
 ARG WORKDIR="/home/raku"
