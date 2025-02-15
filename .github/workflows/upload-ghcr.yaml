@@ -5,7 +5,7 @@ on:
     paths:
       - Dockerfile
       - '*.Dockerfile'
-      - .github/workflows/test-upload-ghcr.yaml
+      - .github/workflows/upload-ghcr.yaml
 
 env:
   REGISTRY: ghcr.io
@@ -22,21 +22,21 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Log in to GHCR
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push regular image
-        uses: docker/build-push-action@v3.2.0
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: ${{ env.REGISTRY }}/jj/raku-zef
 
       - name: Build and push github actions image
-        uses: docker/build-push-action@v3.2.0
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: github-actions.Dockerfile
@@ -44,7 +44,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/jj/raku-zef-gha
 
       - name: Build and push github actions + coverage image
-        uses: docker/build-push-action@v3.2.0
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: github-actions-coverage.Dockerfile
