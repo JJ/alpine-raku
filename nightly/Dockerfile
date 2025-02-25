@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ARG VER="master"
+ARG VER="moar-blead"
 LABEL version="3.1.0" maintainer="JJMerelo@GMail.com" rakuversion=$VER
 
 # Set up as root
